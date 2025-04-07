@@ -270,6 +270,10 @@ class PdfBuilder implements Responsable
 
         $visibility = $this->visibility;
 
+        if(!$diskName) {
+            $diskName = config('filesystem.default');
+        }
+
         Storage::disk($diskName)->put($path, $content, $visibility);
 
         return $this;
